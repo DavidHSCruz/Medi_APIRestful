@@ -1,7 +1,7 @@
 import express from 'express'
 import pkg from 'body-parser'
 import router from './routes/router.js'
-import db from './database/database.js'
+import connectDB from './database/database.js'
 
 const PORT = process.env.PORT || 3000
 

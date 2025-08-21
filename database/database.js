@@ -1,14 +1,16 @@
 import mongoose from "mongoose"
 
 const MONGO_URI = process.env.MONGO_URI
-mongoose.connect(MONGO_URI)
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } }
 
-const db = mongoose.connection
+async function connectDB() {
+  try {
+    await mongoose.connect(MONGO_URI, clientOptions);
+    console.log("Connected to MongoDB!");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
+}
 
-db.on('error', console.error.bind(console, 'connection error:'))
+export default connectDB
 
-db.once('open', function() {
-  console.log('Connected to MongoDB')
-})
-
-export default db
