@@ -3,6 +3,7 @@ import pkg from 'body-parser'
 import router from './routes/router.js'
 import connectDB from './database/database.js'
 
+connectDB()
 const PORT = process.env.PORT || 3000
 
 const app = express()
