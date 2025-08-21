@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 
-mongoose.connect('mongodb://localhost:27017/medi-app')
+const MONGO_URI = process.env.MONGO_URI
+mongoose.connect(MONGO_URI)
 
 const db = mongoose.connection
 
